@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+        }
+        .calc {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 60px;
+            font-size: 1.8rem;
+            text-align: right;
+            margin-bottom: 15px;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 18px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            background: #444;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover { background: #666; }
+        .equals { background: #ff9500; grid-column: span 2; }
+    </style>
+</head>
+<body>
+
+<div class="calc">
+    <form method="POST">
+        <input type="text" name="expresion" id="display" value="{{ resultado }}" readonly>
+
+        <div class="buttons">
+            <button type="button" onclick="add('7')">7</button>
+            <button type="button" onclick="add('8')">8</button>
+            <button type="button" onclick="add('9')">9</button>
+            <button type="button" onclick="add('/')">/</button>
+
+            <button type="button" onclick="add('4')">4</button>
+            <button type="button" onclick="add('5')">5</button>
+            <button type="button" onclick="add('6')">6</button>
+            <button type="button" onclick="add('*')">*</button>
+
+            <button type="button" onclick="add('1')">1</button>
+            <button type="button" onclick="add('2')">2</button>
+            <button type="button" onclick="add('3')">3</button>
+            <button type="button" onclick="add('-')">-</button>
+
+            <button type="button" onclick="add('0')">0</button>
+            <button type="button" onclick="add('.')">.</button>
+            <button type="submit" class="equals">=</button>
+            <button type="button" onclick="clearDisplay()">C</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const display = document.getElementById("display");
+
+    function add(val) {
+        display.value += val;
+    }
+    function clearDisplay() {
+        display.value = "";
+    }
+</script>
+
+</body>
+</html>
